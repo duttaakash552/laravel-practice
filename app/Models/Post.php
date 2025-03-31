@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
+use App\Models\Comment;
 
 class Post extends Model
 {
@@ -13,12 +14,18 @@ class Post extends Model
 	protected $fillable = [ 
         'user_id',
 		'title',
-		'description'
+		'description',
+		'file_path'
     ];
 	
 	public function users()
 	{
 		return $this->belongsTo(User::class);
+	}
+	
+	public function commentss()
+	{
+		return $this->hasMany(Comment::class);
 	}
 	
 	public function getTitleAttribute($value)

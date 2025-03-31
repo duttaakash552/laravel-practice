@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CommentController;
 
 Route::group(['middleware'=>'GuestMiddleware'], function() {
 	Route::get('/', [UserController::class, 'index'])->name('home');
@@ -16,6 +17,7 @@ Route::group(['middleware'=>'AuthMiddleware'], function() {
 	Route::post('/submit-post', [PostController::class, 'submit'])->name('submit.post');
 	Route::get('/delete-post/{id}', [PostController::class, 'delete_post'])->name('delete.post');
 	Route::get('/show-post/{id}', [PostController::class, 'show_post'])->name('show.post');
+	Route::post('/submit-comment', [CommentController::class, 'submit_comment'])->name('submit.comment');
 	Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
 

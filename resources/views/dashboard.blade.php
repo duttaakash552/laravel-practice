@@ -8,7 +8,7 @@
 	{{ Session::get('success') }}
 	</div>
 @endif
-<form method="post" action="{{ route('submit.post') }}">
+<form method="post" action="{{ route('submit.post') }}" enctype="multipart/form-data">
 @csrf
 <div>
 <label>Post Title:</label>
@@ -17,6 +17,10 @@
 <div>
 <label>Post Description:</label>
 <textarea name="description" required></textarea>
+</div>
+<div>
+<label>Image:</label>
+<input type="file" name="file" required />
 </div>
 <input type="submit" value="Post" />
 </form>
